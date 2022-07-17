@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  moviedb:
+    platform: linux/amd64
+    build: ./moviedb
+    ports:
+    - "5432:5432"
+
+  bot:
+    build: ./moviebot
+    ports:
+    - "5000:5000"
+    environment:
+      PORT: 5000
+      # Valid levels are debug, info, warning, error, critical. If no valid level is set, gunicorn will default to info.
+      LOG_LEVEL: debug
+      MOVEIS_DB_URI: "postgresql://accountsadmin:accountspwd@accounts-db:5432/moviedb"

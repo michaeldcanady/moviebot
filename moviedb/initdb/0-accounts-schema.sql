@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS movies (
+  movieid CHAR(10) PRIMARY KEY,
+  moviename VARCHAR(64) UNIQUE NOT NULL,
+  watched BOOLEAN NOT NULL
+)
